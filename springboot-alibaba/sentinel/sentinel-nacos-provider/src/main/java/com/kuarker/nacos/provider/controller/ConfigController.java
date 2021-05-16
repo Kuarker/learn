@@ -17,8 +17,10 @@ public class ConfigController implements ConfigApi {
     @Value("${my.config}")
     private String config;
 
+
     @Override
-    public String test() {
+    public String test(String key) {
+        System.out.println("-----------------"+key+"--------------");
         return config;
     }
 }

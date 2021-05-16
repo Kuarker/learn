@@ -1,11 +1,11 @@
 #  启动的时候 ，配置中心的配置优先于bootstrap的配置
 # 配置优先级 vm 参数>配置中心>application-xxx.yaml>application.yaml>bootstrap.yaml
 server:
-  port: 10001
+  port: 10012
 spring:
   application:
     # 应用名称
-    name: nacos-provider
+    name: nacos-consumer
   profiles:
     # 环境配置
     active: dev
@@ -23,7 +23,10 @@ spring:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
         # 默认支持动态刷新
         refresh-enabled: true
-
       discovery:
         server-addr: localhost:8848
         namespace: dev_a1
+# 打印sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
