@@ -14,12 +14,12 @@
     <modules>
         <module>sentinel</module>
     </modules>
-<dependencies>
-    <dependency>
-        <groupId>com.kuarker</groupId>
-        <artifactId>common</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </dependency>
-</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.kuarker</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

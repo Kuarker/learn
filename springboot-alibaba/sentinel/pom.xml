@@ -12,7 +12,32 @@
     <groupId>com.kuarker.sentinel</groupId>
     <artifactId>sentinel</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>sentinel-nacos-provider</module>
+        <module>sentinel-nacos-consumer</module>
+        <module>sentinel-nacos-api</module>
+    </modules>
+    <dependencyManagement>
+        <!--springcloud其实就是基于springboot的，只是多了几个适合分布式的组件 注册管理、配置管理、负载均衡、网关等组件-->
 
+        <!--dependencyManagement 只是做依赖的版本管理，不会真正引入jar包，引入jar包需要在dependencies 标签里-->
 
+        <!--spring-cloud-alibaba 和 Spring Cloud Hoxton 在这里的作用都一样的，都只是作为版本管理而已-->
+
+        <!--启动类是否需要加 @SpringCloudXXXX的注解 ，其实核心的就是@SpringbootApplication,
+        想要服务发现，添加一个服务发现注解即可
+        想要使用配置管理，使用配置刷新的注解即可
+        底下的controller、service再添加对于的服务 -->
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <!--这个版本的支持 springboot 2.3.7.release-->
+                <version>2.2.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
