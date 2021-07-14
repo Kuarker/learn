@@ -1,0 +1,21 @@
+server:
+  port: 9100
+
+feign:
+  #  okhttp:
+  #    enabled: true
+  httpclient:
+    enabled: true
+test:
+  map: {key1: 'value1', key2: 'value2'}
+
+logging:
+  level:
+    com.kuarker.demo.api.FreeGoApi: debug
+spring:
+  rabbitmq:
+    host: 120.79.177.68
+    port: 5672
+    virtual-host: /
+    username: admin
+    password: 123456
