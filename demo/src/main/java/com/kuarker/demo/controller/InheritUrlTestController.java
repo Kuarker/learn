@@ -35,4 +35,12 @@ public class InheritUrlTestController implements InheritUrlTestApi {
                 "商家账号通过审核"+suffix);
         return name + " " + suffix;
     }
+
+    @Override
+    public String testPost(String suffix) {
+
+
+        System.out.println("================>" +suffix);
+        return suffix;
+    }
 }

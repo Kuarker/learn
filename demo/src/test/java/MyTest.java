@@ -1,4 +1,5 @@
-
+import java.math.BigDecimal;
+import java.util.HashSet;
 
 /**
  * @description:
@@ -27,12 +28,16 @@ public class MyTest {
 //        BigDecimal one = new BigDecimal("1");
 //
 //        System.out.println(zero.compareTo(one));
-        for (int i = 0; i < 100; i++) {
-            double random = Math.random();
-            int num = (int) (random*100000000);
-            System.out.println(num+"----"+(String.valueOf(num)).length());
-        }
-
-
+//        for (int i = 0; i < 100; i++) {
+//            double random = Math.random();
+//            int num = (int) (random*100000000);
+//            System.out.println(num+"----"+(String.valueOf(num)).length());
+//        }
+        HashSet<BigDecimal> set = new HashSet<>();
+        set.add(new BigDecimal("0.2"));
+        set.add(new BigDecimal("0.3"));
+        set.add(new BigDecimal("0.4"));
+        BigDecimal minAvgDailyPrice = set.stream().min(BigDecimal::compareTo).orElseGet(()->null);
+        System.out.println(minAvgDailyPrice);
     }
 }
