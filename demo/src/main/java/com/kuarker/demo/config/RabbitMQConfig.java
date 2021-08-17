@@ -66,7 +66,7 @@ public class RabbitMQConfig {
     public Queue newMerchantQueue() {
         Map<String, Object> args = new HashMap<>(3);
         //消息过期后，进入到死信交换机
-        args.put("x-dead-letter-exchange", CHECK_OUT_DEAD_QUEUE);
+        args.put("x-dead-letter-exchange", CHECK_OUT_DEAD_EXCHANGE);
         //消息过期后，进入到死信交换机的路由key
         args.put("x-dead-letter-routing-key", CHECK_OUT_QUEUE_ROUTING_KEY);
         //过期时间，单位毫秒

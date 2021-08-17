@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor 客人
+
+actor Waiter
+客人 -> Waiter: 请求退房
+activate Waiter
+database 订单
+Waiter -> 通天塔WEB: 寻找客人的房间号，操作退房
+activate 通天塔WEB
+database 房间
+database 订单
+通天塔WEB -> 订单 : 修改订单状态为已完成
+database RabbitMQ
+通天塔WEB -> RabbitMQ: 发送延时消息
+activate RabbitMQ
+通天塔WEB -> 阿里云短信: 请求发送短信
+activate 阿里云短信
+Waiter <-- 通天塔WEB: 响应成功
+deactivate 通天塔WEB
+客人 <-- Waiter : 告知用户已完成退房
+deactivate 通天塔WEB
+deactivate Waiter
+客人 <-- 阿里云短信: 通知用户退房已经完成，可对入住进行评价
+deactivate 阿里云短信
+...10min后...
+通天塔WEB <-- RabbitMQ: 处理延时消息
+deactivate RabbitMQ
+activate 通天塔WEB
+通天塔WEB -> 房间 :更改房间为退房待清洁
+deactivate 通天塔WEB
+
+@enduml

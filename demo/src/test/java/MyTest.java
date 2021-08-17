@@ -1,5 +1,5 @@
-import java.math.BigDecimal;
-import java.util.HashSet;
+import com.kuarker.common.vo.util.MyAssert;
+import com.kuarker.demo.pojo.vo.AuthVO;
 
 /**
  * @description:
@@ -8,7 +8,7 @@ import java.util.HashSet;
  **/
 public class MyTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
 //        LocalDate now1 = LocalDate.now();
 //        LocalDate now2 = LocalDate.now();
 //        System.out.println(now1);
@@ -33,11 +33,16 @@ public class MyTest {
 //            int num = (int) (random*100000000);
 //            System.out.println(num+"----"+(String.valueOf(num)).length());
 //        }
-        HashSet<BigDecimal> set = new HashSet<>();
-        set.add(new BigDecimal("0.2"));
-        set.add(new BigDecimal("0.3"));
-        set.add(new BigDecimal("0.4"));
-        BigDecimal minAvgDailyPrice = set.stream().min(BigDecimal::compareTo).orElseGet(()->null);
-        System.out.println(minAvgDailyPrice);
+//        HashSet<BigDecimal> set = new HashSet<>();
+//        set.add(new BigDecimal("0.2"));
+//        set.add(new BigDecimal("0.3"));
+//        set.add(new BigDecimal("0.4"));
+//        BigDecimal minAvgDailyPrice = set.stream().min(BigDecimal::compareTo).orElseGet(()->null);
+//        System.out.println(minAvgDailyPrice);
+
+        System.out.println(int.class);
+        System.out.println(Integer.class);
+        AuthVO authVO = new AuthVO();authVO.setDepartmentUuid("rr").setMobile("tt");
+        MyAssert.notNull(null, "ObjectMapper should not be null %s","23er23r");
     }
 }

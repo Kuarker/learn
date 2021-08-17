@@ -1,8 +1,8 @@
 package com.kuarker.common.vo.exp;
 
 import com.kuarker.common.vo.R;
-import lombok.extern.slf4j.Slf4j;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author: Jiayan Lee
  * @date: 2021-7-2
  **/
-@Slf4j
+//@Slf4j
 public class ExpUtil {
 
     private static int success = 200;
@@ -83,4 +83,17 @@ public class ExpUtil {
 //        }
 //        return t;
 //    }
+
+    public static <T> T notNull(T object, String errorMsgTemplate, Object... params) {
+        return notNull(object, () -> new BizException(String.format(errorMsgTemplate, params)));
+
+    }
+
+    public static <T, X extends BizException> T notNull(T object, Supplier<X> supplier) throws X {
+        if (Objects.isNull(object)) {
+            throw supplier.get();
+        } else {
+            return object;
+        }
+    }
 }
