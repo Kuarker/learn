@@ -134,4 +134,13 @@ public class FeignTestController {
         System.out.println(JSON.toJSONString(liftQRCode));
         return R.ok(liftQRCode.getData());
     }
+
+
+    @GetMapping("/test")
+    public R test(AuthVO authVO) {
+        System.out.println(JSON.toJSONString(authVO));
+        ResponseVO<LiftQRCodeVO> liftQRCode = freeGoApi.getLiftQRCode(authVO);
+        System.out.println(JSON.toJSONString(liftQRCode));
+        return R.ok(liftQRCode.getData());
+    }
 }

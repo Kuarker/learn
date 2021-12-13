@@ -1,9 +1,5 @@
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @description:
  * @author: Jiayan Lee
@@ -128,18 +124,51 @@ public class MyTest {
 //    }
 
 
-        List<Integer> list = new ArrayList<>();
-
-
-        list.add(1);
-        Method add =list.getClass().getDeclaredMethod("add",Object.class);
-        add.invoke(list, "kkk");
-        add.invoke(list, "www");
-        add.invoke(list, "eee");
-        add.invoke(list, "rrr");
-        System.out.println(list);
+//        List<Integer> list = new ArrayList<>();
+//
+//
+//        list.add(1);
+//        Method add =list.getClass().getDeclaredMethod("add",Object.class);
+//        add.invoke(list, "kkk");
+//        add.invoke(list, "www");
+//        add.invoke(list, "eee");
+//        add.invoke(list, "rrr");
+//        System.out.println(list);
+        System.out.println(OriginalDigits("kkhygugiuy"));
 
     }
+
+
+    public static String OriginalDigits(String s) {
+        StringBuilder ans = new StringBuilder();
+        int[] word = new int[26];
+        int[] nums = new int[11];
+        int leg = s.length();
+        for (int k = 0; k < leg; k++) {
+            word[s.charAt(k) - 'a']++;
+        }
+        nums[0] = word['z' - 'a'];
+        nums[2] = word['w' - 'a'];
+        nums[4] = word['u' - 'a'];
+        nums[6] = word['x' - 'a'];
+        nums[8] = word['g' - 'a'];
+
+        nums[3] = word['h' - 'a'] - nums[8];
+        nums[5] = word['f' - 'a'] - nums[4];
+        nums[7] = word['s' - 'a'] - nums[6];
+
+        nums[1] = word['o' - 'a'] - nums[0] - nums[2] - nums[4];
+        nums[9] = word['i' - 'a'] - nums[5] - nums[6] - nums[8];
+        nums[10] = word['t' - 'a'] - nums[2] - nums[3] - nums[8];
+
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < nums[i]; j++) {
+                ans.append(i);
+            }
+        }
+        return ans.toString();
+    }
+
 }
 
 

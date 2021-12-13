@@ -2,8 +2,6 @@ package com.kuarker.demo.relistener;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
@@ -12,8 +10,8 @@ import java.io.IOException;
  * @author: Jiayan Lee
  * @date: 2021-7-14
  **/
-@Component
-@RabbitListener(queues = "lock_merchant_dead_queue")
+//@Component
+//@RabbitListener(queues = "lock_merchant_dead_queue")
 public class RabbitMQListener {
 
 
