@@ -7,6 +7,8 @@
         <module>common</module>
         <module>springboot-alibaba</module>
         <module>demo</module>
+        <module>spring-learn</module>
+        <module>learn-test</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
