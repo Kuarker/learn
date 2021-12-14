@@ -1,12 +1,7 @@
 package com.kuarker.learn;
 
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.context.annotation.ConfigurationClassPostProcessor;
+import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 /**
  * @description:
@@ -16,20 +11,11 @@ import java.util.Arrays;
 //@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-//        SpringApplication.run(App.class, args);
-
-
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(Bean.class);
-        AbstractBeanDefinition beanDefinition = builder.getBeanDefinition();
-        beanFactory.registerBeanDefinition("bean",beanDefinition);
-        ConfigurationClassPostProcessor postProcessor = new ConfigurationClassPostProcessor();
-        postProcessor.postProcessBeanDefinitionRegistry(beanFactory);
-        System.out.println(Arrays.toString(beanFactory.getBeanDefinitionNames()));
+        SpringApplication.run(App.class, args);
     }
 
     @Component
-    static class Bean{
+    static class Bean {
 
     }
 }
