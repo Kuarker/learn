@@ -26,6 +26,7 @@ public class App {
 //        System.out.println(bean5);
         Object bean6 = SpringUtil.getBean("bean6");
         System.out.println(bean6);
+
     }
 
     @Component
