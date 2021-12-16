@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @description:
@@ -59,6 +62,27 @@ public class MyAutoConfiguration {
     @ConditionalOnBean(name = {"bean3"}) // 会注入，因为Bean3类型已经注入了，所以这里不会把 bean2放入IOC容器管理
     public Bean2 bean2() {
         return new Bean2();
+    }
+
+
+    @Bean(name = "myPool")
+    public ThreadPoolTaskExecutor checkByPhoneExecutor () {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        // 设置核心线程数
+        executor.setCorePoolSize(1);
+        // 设置最大线程数
+        executor.setMaxPoolSize(20);
+        // 设置队列长度 ,不可以设置太长，否则前端刷新会不断添加新任务到队列，整体依然属于同步
+        executor.setQueueCapacity(50);
+        // 设置线程存活时间
+        executor.setKeepAliveSeconds(60);
+        // 设置线程前缀
+        executor.setThreadNamePrefix("myPool-");
+        // 设置拒绝策略 静默抛弃，不处理
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
+        // 线程池初始化
+        executor.initialize();
+        return executor;
     }
 
 }
