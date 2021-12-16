@@ -79,7 +79,7 @@ public class MyAutoConfiguration {
         // 设置线程前缀
         executor.setThreadNamePrefix("myPool-");
         // 设置拒绝策略 静默抛弃，不处理
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
         // 线程池初始化
         executor.initialize();
         return executor;

@@ -1,6 +1,6 @@
 package com.kuarker.test;
 
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.Executors;
 
 /**
  * @description:
@@ -13,7 +13,7 @@ public class ThreadPoolApp {
     public static void main(String[] args) {
 
 
-
+        Executors.newFixedThreadPool(2);
 
     }
 
