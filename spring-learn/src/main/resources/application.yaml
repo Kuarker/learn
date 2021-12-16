@@ -6,3 +6,8 @@ my:
   auto:
     prefix: kk
 
+
+spring:
+  redis:
+    cluster:
+      nodes:  ## list 类型
