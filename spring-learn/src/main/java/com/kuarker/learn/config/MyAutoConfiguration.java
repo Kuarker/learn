@@ -69,11 +69,11 @@ public class MyAutoConfiguration {
     public ThreadPoolTaskExecutor checkByPhoneExecutor () {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 设置核心线程数
-        executor.setCorePoolSize(1);
+        executor.setCorePoolSize(4);
         // 设置最大线程数
         executor.setMaxPoolSize(20);
         // 设置队列长度 ,不可以设置太长，否则前端刷新会不断添加新任务到队列，整体依然属于同步
-        executor.setQueueCapacity(50);
+        executor.setQueueCapacity(1);
         // 设置线程存活时间
         executor.setKeepAliveSeconds(60);
         // 设置线程前缀
