@@ -9,6 +9,7 @@
         <module>demo</module>
         <module>spring-learn</module>
         <module>learn-test</module>
+        <module>springcloud-learn</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
